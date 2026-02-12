@@ -33,13 +33,19 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public IActionResult Application( Application response)
+    public IActionResult Application(Application response)
     {
-        _context.Applications.Add(response);// Add record to the database
+        if (!ModelState.IsValid)
+        {
+            return View("AddMovie", response);
+        }
+
+        _context.Applications.Add(response);
         _context.SaveChanges();
-        
-        return View("AddMovie", response);
+
+        return View("index", response); 
     }
+
 
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

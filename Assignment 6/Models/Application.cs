@@ -5,6 +5,7 @@ namespace Assignment_6.Models;
 public class Application
 {
     [Key]
+    public int ApplicationId { get; set; } 
     [Required]
     public string Category { get; set; }
 
@@ -20,7 +21,7 @@ public class Application
     [Required]
     public string Rating { get; set; } = string.Empty; // must be one of G/PG/PG-13/R
 
-    [Required]
+
     public bool? Edited { get; set; } // optional when creating (so nullable)
 
     public string? LentTo { get; set; } // optional

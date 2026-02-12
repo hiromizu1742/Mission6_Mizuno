@@ -18,14 +18,19 @@ namespace Assignment_6.Migrations
 
             modelBuilder.Entity("Assignment_6.Models.Application", b =>
                 {
+                    b.Property<int>("ApplicationId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Category")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Director")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<bool>("Edited")
+                    b.Property<bool?>("Edited")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("LentTo")
@@ -46,7 +51,7 @@ namespace Assignment_6.Migrations
                     b.Property<int>("Year")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("Category");
+                    b.HasKey("ApplicationId");
 
                     b.ToTable("Applications");
                 });

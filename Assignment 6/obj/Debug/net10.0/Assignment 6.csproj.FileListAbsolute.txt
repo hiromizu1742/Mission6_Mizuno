@@ -269,3 +269,4 @@
 /Users/hirohitomizuno/Documents/IS 413/Assignment5/Assignment 6/Assignment 6/bin/Debug/net10.0/runtimes/win/lib/net9.0/System.Windows.Extensions.dll
 /Users/hirohitomizuno/Documents/IS 413/Assignment5/Assignment 6/Assignment 6/obj/Debug/net10.0/Assignment 6.csproj.AssemblyReference.cache
 /Users/hirohitomizuno/Documents/IS 413/Assignment5/Assignment 6/Assignment 6/obj/Debug/net10.0/Assignme.D625BD87.Up2Date
+/Users/hirohitomizuno/Documents/IS 413/Assignment5/Assignment 6/Assignment 6/obj/Debug/net10.0/Assignment 6.sourcelink.json
