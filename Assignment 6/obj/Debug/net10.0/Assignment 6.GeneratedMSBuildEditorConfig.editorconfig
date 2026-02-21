@@ -34,12 +34,20 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9BZGRNb3ZpZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/hirohitomizuno/Documents/IS 413/Assignment5/Assignment 6/Assignment 6/Views/Home/DeleteConfirm.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9EZWxldGVDb25maXJtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/hirohitomizuno/Documents/IS 413/Assignment5/Assignment 6/Assignment 6/Views/Home/GetToKnowJoel.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9HZXRUb0tub3dKb2VsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/hirohitomizuno/Documents/IS 413/Assignment5/Assignment 6/Assignment 6/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/hirohitomizuno/Documents/IS 413/Assignment5/Assignment 6/Assignment 6/Views/Home/ListMovies.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9MaXN0TW92aWVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/hirohitomizuno/Documents/IS 413/Assignment5/Assignment 6/Assignment 6/Views/Home/Privacy.cshtml]
