@@ -8,5 +8,6 @@ public class MoviesContext : DbContext
     {
     }
 
+    // Standalone context for Movies table (kept per assignment request).
     public DbSet<Movies> Movies { get; set; }
 }

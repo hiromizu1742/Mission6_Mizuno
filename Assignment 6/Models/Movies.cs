@@ -6,7 +6,10 @@ namespace Assignment_6.Models;
 public class Movies
 {
     [Key]
+    // Primary key from Movies table.
     public int MovieId { get; set; }
+
+    // Optional FK to Categories table.
     public int? CategoryId { get; set; }
 
     [ForeignKey(nameof(CategoryId))]
@@ -22,12 +25,14 @@ public class Movies
 
     [Required(ErrorMessage = "Edited is required.")]
     [Range(0, 1, ErrorMessage = "Edited must be Yes or No.")]
+    // Stored as 0/1 in SQLite.
     public int Edited { get; set; }
 
     public string? LentTo { get; set; }
 
     [Required(ErrorMessage = "CopiedToPlex is required.")]
     [Range(0, 1, ErrorMessage = "CopiedToPlex must be Yes or No.")]
+    // Stored as 0/1 in SQLite.
     public int CopiedToPlex { get; set; }
     public string? Notes { get; set; }
 }

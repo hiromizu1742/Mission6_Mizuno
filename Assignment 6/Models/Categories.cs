@@ -8,5 +8,6 @@ public class Categories
     public int CategoryId { get; set; }
     public string CategoryName { get; set; } = string.Empty;
 
+    // Navigation property for all movies in this category.
     public List<Movies> Movies { get; set; } = new();
 }

@@ -7,6 +7,7 @@ namespace Assignment_6.Controllers;
 
 public class HomeController : Controller
 {
+    // Main EF Core context used for movie CRUD operations.
     private ApplicationContext _context;
     
     public HomeController(ApplicationContext context)
@@ -31,6 +32,7 @@ public class HomeController : Controller
     [HttpGet]
     public IActionResult ListMovies()
     {
+        // Load movies with category names for the list page.
         var movies = _context.Movies
             .Include(m => m.Category)
             .OrderBy(m => m.Title)
@@ -42,6 +44,7 @@ public class HomeController : Controller
     [HttpGet]
     public IActionResult Application()
     {
+        // Reuse AddMovie view for creating a new movie.
         ViewBag.FormAction = "Application";
         ViewBag.SubmitText = "Submit Movie";
         return View("AddMovie", new Movies());
@@ -52,6 +55,7 @@ public class HomeController : Controller
     {
         if (!ModelState.IsValid)
         {
+            // Keep user input and show validation messages.
             ViewBag.FormAction = "Application";
             ViewBag.SubmitText = "Submit Movie";
             return View("AddMovie", response);
@@ -66,6 +70,7 @@ public class HomeController : Controller
     [HttpGet]
     public IActionResult Edit(int id)
     {
+        // Load selected movie and reuse AddMovie view in edit mode.
         var movie = _context.Movies.FirstOrDefault(m => m.MovieId == id);
         if (movie == null)
         {
@@ -82,6 +87,7 @@ public class HomeController : Controller
     {
         if (!ModelState.IsValid)
         {
+            // Keep edit mode and show validation errors.
             ViewBag.FormAction = "Edit";
             ViewBag.SubmitText = "Update Movie";
             return View("AddMovie", response);
@@ -95,6 +101,7 @@ public class HomeController : Controller
     [HttpGet]
     public IActionResult DeleteConfirm(int id)
     {
+        // Show confirmation before deleting a movie.
         var movie = _context.Movies
             .Include(m => m.Category)
             .FirstOrDefault(m => m.MovieId == id);
@@ -110,6 +117,7 @@ public class HomeController : Controller
     [HttpPost, ActionName("DeleteConfirm")]
     public IActionResult DeleteConfirmed(int movieId)
     {
+        // Delete the selected movie after user confirms.
         var existingMovie = _context.Movies
             .FirstOrDefault(x => x.MovieId == movieId);
 
