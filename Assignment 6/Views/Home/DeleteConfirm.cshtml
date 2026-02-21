@@ -1,0 +1,13 @@
+@model Assignment_6.Models.Movies
+
+<h2>Delete Confirmation</h2>
+<h3>@Model.Category?.CategoryName, @Model.Title</h3>
+
+<form asp-action="DeleteConfirm" method="post">
+    <div asp-validation-summary="ModelOnly"></div>
+    
+    <input type="hidden" asp-for="MovieId"/>
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a class="btn btn-secondary" asp-controller="Home" asp-action="ListMovies">Cancel</a>
+           
+</form>

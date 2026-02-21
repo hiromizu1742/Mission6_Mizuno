@@ -92,6 +92,46 @@ public class HomeController : Controller
         return RedirectToAction("ListMovies");
     }
 
+    [HttpGet]
+    public IActionResult DeleteConfirm(int id)
+    {
+        var movie = _context.Movies
+            .Include(m => m.Category)
+            .FirstOrDefault(m => m.MovieId == id);
+
+        if (movie == null)
+        {
+            return NotFound();
+        }
+
+        return View("DeleteConfirm", movie);
+    }
+
+    [HttpPost, ActionName("DeleteConfirm")]
+    public IActionResult DeleteConfirmed(int movieId)
+    {
+        var existingMovie = _context.Movies
+            .FirstOrDefault(x => x.MovieId == movieId);
+
+        if (existingMovie == null)
+        {
+            return NotFound();
+        }
+        
+        _context.Movies.Remove(existingMovie);
+        try
+        {
+            _context.SaveChanges();
+        }
+        catch (DbUpdateException)
+        {
+            ModelState.AddModelError("", "An error occurred while trying to delete the movie.");
+            return View("DeleteConfirm", existingMovie);
+        }
+
+        return RedirectToAction("ListMovies");
+    }
+
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
