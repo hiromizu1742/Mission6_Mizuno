@@ -1,18 +1,21 @@
-@model Assignment_6.Models.Application
+@model Assignment_6.Models.Movies
 
 @{
     ViewData["Title"] = "Home Page";
+    var formAction = ViewBag.FormAction as string ?? "Application";
+    var submitText = ViewBag.SubmitText as string ?? "Submit Movie";
 }
 
 <h1 class="display-6">Add a Movie</h1>
 
-<form asp-action="Application" method="post" class="mt-4">
+<form asp-action="@formAction" method="post" class="mt-4">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input asp-for="MovieId" type="hidden" />
 
     <div class="mb-3">
-        <label asp-for="Category" class="form-label"></label>
-        <input asp-for="Category" class="form-control" />
-        <span asp-validation-for="Category" class="text-danger"></span>
+        <label asp-for="CategoryId" class="form-label">Category Id</label>
+        <input asp-for="CategoryId" class="form-control" />
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
     </div>
 
     <div class="mb-3">
@@ -46,13 +49,21 @@
     </div>
 
     <div class="mb-3">
-        <label class="form-label">Edited (optional)</label>
+        <label asp-for="Edited" class="form-label"></label>
         <select asp-for="Edited" class="form-select">
-            <option value="">-- Select --</option>
-            <option value="true">Yes</option>
-            <option value="false">No</option>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
         </select>
         <span asp-validation-for="Edited" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="CopiedToPlex" class="form-label">Copied To Plex</label>
+        <select asp-for="CopiedToPlex" class="form-select">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select>
+        <span asp-validation-for="CopiedToPlex" class="text-danger"></span>
     </div>
 
     <div class="mb-3">
@@ -62,11 +73,10 @@
     </div>
 
     <div class="mb-3">
-        <label asp-for="Notes" class="form-label">Notes (optional, max 25 chars)</label>
-        <input asp-for="Notes" class="form-control" maxlength="25" />
+        <label asp-for="Notes" class="form-label">Notes (optional)</label>
+        <input asp-for="Notes" class="form-control" />
         <span asp-validation-for="Notes" class="text-danger"></span>
-        <div class="form-text">Maximum 25 characters.</div>
     </div>
 
-    <button type="submit" class="btn btn-primary">Submit Movie</button>
+    <button type="submit" class="btn btn-primary">@submitText</button>
 </form>

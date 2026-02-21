@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Assignment_6.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Assignment_6.Controllers;
 
@@ -26,26 +27,70 @@ public class HomeController : Controller
     {
         return View();
     }
+    
+    [HttpGet]
+    public IActionResult ListMovies()
+    {
+        var movies = _context.Movies
+            .Include(m => m.Category)
+            .OrderBy(m => m.Title)
+            .ToList();
+
+        return View(movies);
+    }
+
     [HttpGet]
     public IActionResult Application()
     {
-        return View("AddMovie");
+        ViewBag.FormAction = "Application";
+        ViewBag.SubmitText = "Submit Movie";
+        return View("AddMovie", new Movies());
     }
 
     [HttpPost]
-    public IActionResult Application(Application response)
+    public IActionResult Application(Movies response)
     {
         if (!ModelState.IsValid)
         {
+            ViewBag.FormAction = "Application";
+            ViewBag.SubmitText = "Submit Movie";
             return View("AddMovie", response);
         }
 
-        _context.Applications.Add(response);
+        _context.Movies.Add(response);
         _context.SaveChanges();
 
-        return View("index", response); 
+        return RedirectToAction("ListMovies");
     }
 
+    [HttpGet]
+    public IActionResult Edit(int id)
+    {
+        var movie = _context.Movies.FirstOrDefault(m => m.MovieId == id);
+        if (movie == null)
+        {
+            return NotFound();
+        }
+
+        ViewBag.FormAction = "Edit";
+        ViewBag.SubmitText = "Update Movie";
+        return View("AddMovie", movie);
+    }
+
+    [HttpPost]
+    public IActionResult Edit(Movies response)
+    {
+        if (!ModelState.IsValid)
+        {
+            ViewBag.FormAction = "Edit";
+            ViewBag.SubmitText = "Update Movie";
+            return View("AddMovie", response);
+        }
+
+        _context.Movies.Update(response);
+        _context.SaveChanges();
+        return RedirectToAction("ListMovies");
+    }
 
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
